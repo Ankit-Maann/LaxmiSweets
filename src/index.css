@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #211615;
+  background: #f8f4ec;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; background: #f8f4ec; }
+button, a { -webkit-tap-highlight-color: transparent; }
+::selection { background: #2b1114; color: #f3d58e; }
+
+.luxury-site { isolation: isolate; }
+
+.lux-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+}
+
+
+.lux-reveal { animation: luxReveal .9s cubic-bezier(.16,1,.3,1) both; }
+.lux-reveal-delay { animation: luxReveal .95s .16s cubic-bezier(.16,1,.3,1) both; }
+@keyframes luxReveal { from { opacity: 0; transform: translateY(22px); clip-path: inset(0 0 35% 0); } to { opacity: 1; transform: translateY(0); clip-path: inset(0); } }
+
+.lux-marquee { animation: luxMarquee 32s linear infinite; }
+@keyframes luxMarquee { to { transform: translateX(-50%); } }
+
+.lux-gold-button, .lux-outline-button, .lux-dark-button {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: .65rem;
+  padding: .85rem 1.25rem;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  transition: transform .35s ease, background .35s ease, border-color .35s ease, color .35s ease;
+}
+.lux-gold-button { background: #d8b66f; color: #241012; }
+.lux-gold-button:hover { transform: translateY(-3px); background: #f0d596; }
+.lux-outline-button { border: 1px solid rgba(255,255,255,.28); color: white; background: rgba(255,255,255,.03); }
+.lux-outline-button:hover { transform: translateY(-3px); border-color: #d8b66f; background: rgba(255,255,255,.08); }
+.lux-dark-button { background: #2b1114; color: white; }
+.lux-dark-button:hover { transform: translateY(-3px); background: #4b1b20; }
+
+.lux-round-control { display: flex; height: 36px; width: 36px; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,.18); color: rgba(255,255,255,.75); transition: all .3s ease; }
+.lux-round-control:hover { border-color: #d8b66f; color: #d8b66f; transform: scale(1.05); }
+
+.lux-collection-card { min-height: 470px; }
+.lux-collection-card::after { content: ""; position: absolute; inset: 0; border: 1px solid rgba(216,182,111,.2); pointer-events: none; transition: inset .5s ease, border-color .5s ease; }
+.lux-collection-card:hover::after { inset: 12px; border-color: rgba(216,182,111,.55); }
+
+.lux-quote { animation: luxQuote .6s cubic-bezier(.16,1,.3,1) both; }
+@keyframes luxQuote { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+.lux-orb { animation: luxOrb 7s ease-in-out infinite alternate; }
+@keyframes luxOrb { from { transform: translate3d(-12px, 8px, 0) scale(.96); } to { transform: translate3d(16px, -12px, 0) scale(1.06); } }
+
+.lux-modal { animation: luxModal .45s cubic-bezier(.16,1,.3,1) both; }
+@keyframes luxModal { from { opacity: 0; transform: translateY(20px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+@media (max-width: 640px) {
+  .lux-hero { min-height: calc(100svh - 42px); }
+  .lux-marquee { animation-duration: 24s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
